@@ -1,0 +1,46 @@
+services:
+  # Reverse Proxy (NestJS)
+  reverse-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  # Blog Service (Nuxt.js)
+  blog-service:
+    build:
+      context: ./services/blog
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  # Payment Service (Nuxt.js)
+  payment-service:
+    build:
+      context: ./services/payments
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+  # Shop Service (Nuxt.js)
+  shop-service:
+    build:
+      context: ./services/shop
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge 
