@@ -2,6 +2,9 @@
 /dist
 /node_modules
 /build
+/src/services/blog/node_modules
+/src/services/payments/node_modules
+/src/services/shop/node_modules
 
 # Logs
 logs
